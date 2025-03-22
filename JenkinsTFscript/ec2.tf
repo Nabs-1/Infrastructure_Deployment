@@ -85,7 +85,7 @@ data "aws_ami" "ubuntu" {
 
 # launch the ec2 instance
 resource "aws_instance" "ec2_instance" {
-  ami                    = "ami-05716d7e60b53d380"
+  ami                    = data.aws_ami.ubuntu.id
   instance_type          = "t2.small"
   subnet_id              = aws_default_subnet.default_az1.id
   vpc_security_group_ids = [aws_security_group.ec2_security_group.id]
